@@ -2,14 +2,17 @@ package com.example.invertedword.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.invertedword.ReverseActivity
+
+val reverseActivity = ReverseActivity()
 
 @Preview(showBackground = true)
 @Composable
@@ -30,11 +33,21 @@ fun ResultScreen() {
             .height(51.dp)
             .offset(x = 136.dp, y = 380.dp)
         ) {
-            Button(onClick = { /*TODO*/ }) {
-                Text("Назад", fontSize = 25.sp)
-            }
+            ButtonBack()
         }
     }
 
+
+}
+
+// Button to open MainActivity
+@Composable
+fun ButtonBack(){
+    val context = LocalContext.current
+    Button(onClick = {
+        reverseActivity.buttonBack(context)
+    }) {
+        Text("Реверс", fontSize = 25.sp)
+    }
 }
 

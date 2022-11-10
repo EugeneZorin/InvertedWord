@@ -6,10 +6,13 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.invertedword.MainActivity
 
+val mainActivity = MainActivity()
 
 @Preview(showBackground = true)
 @Composable
@@ -37,11 +40,20 @@ fun MainScreen() {
             .height(51.dp)
             .offset(x = 125.dp, y = 350.dp)
         ) {
-            Button(onClick = { /*TODO*/ }) {
-                Text("Реверс", fontSize = 25.sp)
-            }
+            ButtonRevers()
         }
 
+    }
+}
+
+// Button to open ReverseActivity
+@Composable
+fun ButtonRevers(){
+    val context = LocalContext.current
+    Button(onClick = {
+        mainActivity.buttonRevers(context)
+    }) {
+        Text("Реверс", fontSize = 25.sp)
     }
 }
 

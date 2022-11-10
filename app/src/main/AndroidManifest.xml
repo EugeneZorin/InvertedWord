@@ -14,9 +14,11 @@
         android:theme="@style/Theme.InvertedWord"
         tools:targetApi="31">
         <activity
+            android:name=".ReverseActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.InvertedWord">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
