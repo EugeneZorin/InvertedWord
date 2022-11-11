@@ -8,7 +8,11 @@ import androidx.activity.compose.setContent
 import com.example.invertedword.screens.MainScreen
 import com.example.invertedword.ui.theme.InvertedWordTheme
 
+
 class MainActivity : ComponentActivity() {
+
+    private val listRevers = arrayListOf<Char>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -20,7 +24,24 @@ class MainActivity : ComponentActivity() {
 
     // Button to open ReverseActivity
     fun buttonRevers(context: Context) {
-        context.startActivity(Intent(context, ReverseActivity::class.java))
+        intent = Intent(context, ReverseActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    // This function will convert the entered value into an array
+    fun wordToArray(word: String): String {
+
+        var string: String = ""
+
+        for (char in word){
+            listRevers.add(char)
+        }
+
+        for (char in listRevers.reversed()){
+            string += char
+        }
+
+        return string
     }
 
 }

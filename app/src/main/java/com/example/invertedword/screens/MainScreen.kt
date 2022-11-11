@@ -13,43 +13,52 @@ import androidx.compose.ui.unit.sp
 import com.example.invertedword.MainActivity
 
 val mainActivity = MainActivity()
+var reversTexts: String = ""
 
 @Preview(showBackground = true)
 @Composable
 fun MainScreen() {
-    Column (
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(5.dp),
-            ) {
+    ) {
 
-        Box(modifier = Modifier
-            .width(250.dp)
-            .height(60.dp)
-            .offset(x = 73.dp, y = 150.dp)
-        ) { ReversText()}
+        Box(
+            modifier = Modifier
+                .width(250.dp)
+                .height(60.dp)
+                .offset(x = 73.dp, y = 150.dp)
+        ) { ReversText() }
 
-        Box(modifier = Modifier
-            .width(250.dp)
-            .height(60.dp)
-            .offset(x = 73.dp, y = 250.dp)
+        Box(
+            modifier = Modifier
+                .width(250.dp)
+                .height(60.dp)
+                .offset(x = 73.dp, y = 250.dp)
         ) { ExclusionsText() }
 
-        Box(modifier = Modifier
-            .width(123.dp)
-            .height(51.dp)
-            .offset(x = 125.dp, y = 350.dp)
+        Box(
+            modifier = Modifier
+                .width(123.dp)
+                .height(51.dp)
+                .offset(x = 125.dp, y = 350.dp)
         ) {
             ButtonRevers()
         }
 
     }
+
+
 }
 
 // Button to open ReverseActivity
 @Composable
 fun ButtonRevers(){
+
     val context = LocalContext.current
+
     Button(onClick = {
         mainActivity.buttonRevers(context)
     }) {
@@ -66,15 +75,23 @@ fun ReversText() {
         onValueChange = { revers = it },
         label = { Text("Инверсия") }
     )
+
+    reversTexts = revers
 }
 
+
+
+
 @Composable
-fun ExclusionsText(){
+fun ExclusionsText() {
     var exclusions by remember { mutableStateOf("") }
 
     OutlinedTextField(
         value = exclusions,
-        onValueChange = {exclusions = it},
-        label = { Text("Исключения")}
+        onValueChange = { exclusions = it },
+        label = { Text("Исключения") }
     )
 }
+
+
+
