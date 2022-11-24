@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
 
     private val listRevers = arrayListOf<Char>()
     private val listExclusions = arrayListOf<Char>()
-    private val exclusionsValues = arrayListOf<Int>()
+    private val exclusionsValues = HashMap<Int, Char>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
 
         var listSize = listRevers.size
         var check = true
-        var exceptionNumber = 0
+
 
         // Deletes and write exceptions
         while (check) {
@@ -55,23 +55,25 @@ class MainActivity : ComponentActivity() {
                 if (listSize != -1) {
                     for (exclusionElement in listExclusions) {
                         if (exclusionElement == listRevers[listSize]) {
+                            exclusionsValues[listSize] = listRevers[listSize]
                             listRevers.removeAt(listSize)
-                            exclusionsValues.add(listSize)
                         }
                     }
                 }
-                exceptionNumber++
-            } else {
-                check = false
-            }
+            } else { check = false }
         }
 
-        return listRevers.toString()
+        return exclusionsValues.toString()
     }
 
     fun clearArray(){
         listRevers.clear()
         listExclusions.clear()
     }
-
 }
+
+
+
+
+
+
