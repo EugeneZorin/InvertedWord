@@ -49,6 +49,7 @@ fun ButtonBack(){
     val context = LocalContext.current
     Button(onClick = {
         reverseActivity.buttonBack(context)
+        mainActivity.clearArray()
     }) {
         Text("Реверс", fontSize = 25.sp)
     }

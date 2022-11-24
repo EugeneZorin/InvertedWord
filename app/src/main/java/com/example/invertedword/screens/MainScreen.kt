@@ -14,6 +14,7 @@ import com.example.invertedword.MainActivity
 
 val mainActivity = MainActivity()
 var reversTexts: String = ""
+var exclusionsTexts: String = ""
 
 @Preview(showBackground = true)
 @Composable
@@ -91,6 +92,8 @@ fun ExclusionsText() {
         onValueChange = { exclusions = it },
         label = { Text("Исключения") }
     )
+
+    exclusionsTexts = exclusions
 }
 
 
