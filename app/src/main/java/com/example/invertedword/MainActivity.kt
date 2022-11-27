@@ -12,9 +12,13 @@ import com.example.invertedword.ui.theme.InvertedWordTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val listRevers = arrayListOf<Char>()
+    private val collectionWord = CollectionWord()
+
     private val listExclusions = arrayListOf<Char>()
-    private val exclusionsValues = HashMap<Int, Char>()
+
+    val listRevers = arrayListOf<Char>()
+    val exclusionsValues = HashMap<Int, Char>()
+    val finalValue = arrayListOf<Char>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,12 +64,20 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-            } else { check = false }
+            } else {
+                check = false
+                collectionWord.wordTurn()
+            }
         }
 
-        return exclusionsValues.toString()
+        return finalValue.toString()
     }
 
+
+
+
+
+    // in developing
     fun clearArray(){
         listRevers.clear()
         listExclusions.clear()

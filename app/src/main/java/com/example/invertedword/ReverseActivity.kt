@@ -12,7 +12,7 @@ import com.example.invertedword.ui.theme.InvertedWordTheme
 
 class ReverseActivity: ComponentActivity() {
 
-    val mainActivity = MainActivity()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
