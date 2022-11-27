@@ -12,13 +12,13 @@ import com.example.invertedword.ui.theme.InvertedWordTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val collectionWord = CollectionWord()
+
 
     private val listExclusions = arrayListOf<Char>()
 
-    val listRevers = arrayListOf<Char>()
-    val exclusionsValues = HashMap<Int, Char>()
-    val finalValue = arrayListOf<Char>()
+    private val listRevers = arrayListOf<Char>()
+    private val exclusionsValues = HashMap<Int, Char>()
+    private val finalValue = arrayListOf<Char>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,11 +66,33 @@ class MainActivity : ComponentActivity() {
                 }
             } else {
                 check = false
-                collectionWord.wordTurn()
+                wordTurn()
             }
         }
 
         return finalValue.toString()
+    }
+
+    // Collects the inverted word
+    private fun wordTurn(){
+        var listSize = listRevers.size
+        var check = true
+
+        while (check) {
+            if (listSize >= 0) {
+                listSize--
+
+                if (listSize > -1) {
+                    for ((a, b) in exclusionsValues) {
+                        if (a == finalValue.size) {
+                            finalValue.add(b)
+                            break
+                        }
+                    }
+                    finalValue.add(listRevers[listSize])
+                }
+            } else { check = false}
+        }
     }
 
 
