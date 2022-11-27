@@ -10,11 +10,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.invertedword.MainActivity
 import com.example.invertedword.ReverseActivity
 
 val reverseActivity = ReverseActivity()
-val mainActivityResult = MainActivity()
 
 @Preview(showBackground = true)
 @Composable
@@ -28,7 +26,7 @@ fun ResultScreen() {
             .height(55.dp)
             .offset(x = 127.dp, y = 150.dp)
         ) {
-            Text(mainActivityResult.wordToArray(reversTexts),
+            Text(mainActivity.wordArray(reversTexts),
                 fontSize = 50.sp, textAlign = TextAlign.Center) }
 
         Box(modifier = Modifier
@@ -49,7 +47,7 @@ fun ButtonBack(){
     val context = LocalContext.current
     Button(onClick = {
         reverseActivity.buttonBack(context)
-        mainActivity.clearArray()
+       // mainActivity.clearArray()
     }) {
         Text("Реверс", fontSize = 25.sp)
     }
