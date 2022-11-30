@@ -13,7 +13,6 @@ import com.example.invertedword.ui.theme.InvertedWordTheme
 
 class ReverseActivity: ComponentActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -27,6 +26,7 @@ class ReverseActivity: ComponentActivity() {
     fun buttonBack(context: Context) {
         context.startActivity(Intent(context, MainActivity::class.java))
     }
+
 
 
 
