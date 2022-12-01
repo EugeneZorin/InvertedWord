@@ -27,14 +27,6 @@ class MainActivity : ComponentActivity() {
         context.startActivity(intent)
     }
 
-
-
-    // in developing
-    // fun clearArray(){
-    //    listRevers.clear()
-    //   listExclusions.clear()
-    // }
-
 }
 
 

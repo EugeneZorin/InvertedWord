@@ -6,4 +6,10 @@ class DataStore {
     val listRevers = ArrayList<Char>()
     val finalValue = ArrayList<Char>()
 
+    fun clearArray(){
+        listExclusions.clear()
+        exclusionsValues.clear()
+        listRevers.clear()
+        finalValue.clear()
+    }
 }

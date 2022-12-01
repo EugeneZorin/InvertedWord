@@ -11,7 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.invertedword.ReverseActivity
+import com.example.invertedword.mainсode.DataStore
 import com.example.invertedword.mainсode.WordArray
+import com.example.invertedword.mainсode.dataStore
 
 val reverseActivity = ReverseActivity()
 val wordArray = WordArray()
@@ -48,10 +50,11 @@ fun ResultScreen() {
 fun ButtonBack(){
     val context = LocalContext.current
     Button(onClick = {
+
         reverseActivity.buttonBack(context)
-       // mainActivity.clearArray()
+
     }) {
-        Text("Реверс", fontSize = 25.sp)
+        Text("Назад", fontSize = 25.sp)
     }
 }
 
