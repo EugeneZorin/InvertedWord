@@ -8,6 +8,7 @@ val assemblingSingleWord = AssemblingSingleWord()
 class WordArray{
 
     private val wordTurn = WordTurn()
+    private var indentationCheck = false
 
     // This function will convert the entered value into an array
     fun wordArray(word: String): String {
@@ -16,13 +17,17 @@ class WordArray{
         dataStore.clearArray()
 
         // Загрузка исключения в массив
-        for (char in exclusionsTexts){
-            dataStore.listExclusions.add(char)
-        }
+        for (char in exclusionsTexts){dataStore.listExclusions.add(char)}
 
         // Загрузка слова в массив
+        // Проверка на пробел в тексте
         for (char in word){
-            dataStore.listRevers.add(char)
+            if (char != ' ') {
+                dataStore.listRevers.add(char)
+            } else {
+                dataStore.listRevers.add(char)
+                indentationCheck = true
+            }
         }
 
         arrayEqualityCheck(word)
@@ -32,29 +37,34 @@ class WordArray{
 
     fun removingExceptionsArray(){
 
-        var listSize = dataStore.listRevers.size
+        var listSize: Int = dataStore.listRevers.size
         var check = true
 
         // Deletes and write exceptions
         while (check) {
-            if ( listSize >= 0) {
-                listSize--
-                if (listSize != -1) {
-                    for (exclusionElement in dataStore.listExclusions) {
-                        if (exclusionElement == dataStore.listRevers[listSize]) {
-                            dataStore.exclusionsValues[listSize] = dataStore.listRevers[listSize]
-                            dataStore.listRevers.removeAt(listSize)
-                        }
+
+            listSize--
+
+            if (listSize > -1) {
+                for (exclusionElement in dataStore.listExclusions) {
+
+                    // Запись пробелов в Hashmap
+                    if (dataStore.listRevers[listSize] == ' ') { dataStore.spaceText.add(listSize)}
+
+                    if (exclusionElement == dataStore.listRevers[listSize]) {
+                        dataStore.exclusionsValues[listSize] = dataStore.listRevers[listSize]
+                        dataStore.listRevers.removeAt(listSize)
+                        break
                     }
                 }
             } else {
                 check = false
-                wordTurn.wordTurn()
+                if (indentationCheck) {wordTurn.turnWordSpace()} else {wordTurn.wordTurn()}
                 assemblingSingleWord.assemblingSingleWord()
             }
-
         }
     }
+
 
     // The function checks if the values in the listExclusions and listRevers.
     fun arrayEqualityCheck(word: String) {
