@@ -1,57 +1,42 @@
 package com.example.invertedword.mainсode
 
+val wordArray = WordArray()
+
 class WordTurn {
 
-    // Collects the inverted word
-    fun wordTurn(){
+    // Inverts and collects a word
+    fun wordTurn(): String{
 
-        var listSize: Int = dataStore.listRevers.size
-        var check = true
+        var numberWordsHashmap: Int = dataStore.mapRevers.size
+        var elementKey: Int = 0
+        var elementNumberCounter: Int = 0
+        var wordTurn: String = ""
+        var oneElementHashmap: String
 
-        while (check) {
+        while (numberWordsHashmap > 0) {
+            oneElementHashmap = dataStore.mapRevers.get(elementKey).toString()
 
-            listSize--
-
-            if (listSize > -1) {
-                for ((a, b) in dataStore.exclusionsValues) {
-                    if (a == dataStore.finalValue.size) {
-                        dataStore.finalValue.add(b)
+            for(char in oneElementHashmap.reversed()){
+                for((key, word) in dataStore.exclusionsValues){
+                    if(elementNumberCounter == key){
+                        wordTurn += word
+                        elementNumberCounter++
                     }
                 }
-                dataStore.finalValue.add(dataStore.listRevers[listSize])
-            } else { check = false }
-        }
-    }
-
-
-    // Не работает. альфа-бета версия (вообще не работает)
-    fun turnWordSpace(){
-
-        var oneWordLength: Int
-        var check = true
-
-
-        for (index in dataStore.spaceText){
-
-            oneWordLength = index
-            oneWordLength--
-
-            while (check) {
-                if (oneWordLength >= 0) {
-                    oneWordLength--
-
-                    if (oneWordLength > -1) {
-                        for ((a, b) in dataStore.exclusionsValues) {
-                            if (a == dataStore.finalValue.size) {
-                                dataStore.finalValue.add(b)
-                                break
-                            }
-                        }
-                        dataStore.finalValue.add(dataStore.listRevers[oneWordLength])
-                    }
-                } else { check = false }
+                elementNumberCounter++
+                wordTurn += char
             }
+
+            if (numberWordsHashmap > 1) {
+                wordTurn += " "
+                elementNumberCounter++
+            }
+
+            numberWordsHashmap--
+            elementKey++
         }
+
+        return wordTurn
     }
 
 }

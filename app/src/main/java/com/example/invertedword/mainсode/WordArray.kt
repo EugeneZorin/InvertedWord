@@ -3,77 +3,63 @@ package com.example.invertedword.mainсode
 import com.example.invertedword.screens.exclusionsTexts
 
 val dataStore = DataStore()
-val assemblingSingleWord = AssemblingSingleWord()
 
 class WordArray{
 
     private val wordTurn = WordTurn()
     private var indentationCheck = false
 
-    // This function will convert the entered value into an array
+    // This is the main function where other functions are called.
+    // write word in hashmap
     fun wordArray(word: String): String {
 
-        // Clearing Arrays
-        dataStore.clearArray()
+        searchExceptionNumber(word)
 
-        // Загрузка исключения в массив
-        for (char in exclusionsTexts){dataStore.listExclusions.add(char)}
+        var purifiedWord: String = removingExceptionsWord(word)
 
-        // Загрузка слова в массив
-        // Проверка на пробел в тексте
-        for (char in word){
-            if (char != ' ') {
-                dataStore.listRevers.add(char)
+        var keyWordNumber: Int = 0
+        var singleWordString: String = ""
+
+        for (char in purifiedWord){
+            if(char != ' '){
+                singleWordString += char.toString()
             } else {
-                dataStore.listRevers.add(char)
+                dataStore.mapRevers.put(keyWordNumber, singleWordString)
+                singleWordString = " "
+                keyWordNumber++
                 indentationCheck = true
             }
         }
 
-        arrayEqualityCheck(word)
+        dataStore.mapRevers.put(keyWordNumber, singleWordString)
 
-        return assemblingSingleWord.world
+        return wordTurn.wordTurn()
     }
 
-    fun removingExceptionsArray(){
+    // Records the exception number
+    fun searchExceptionNumber(word: String){
 
-        var listSize: Int = dataStore.listRevers.size
-        var check = true
+        var keyExclusionsValues: Int = 0
 
-        // Deletes and write exceptions
-        while (check) {
-
-            listSize--
-
-            if (listSize > -1) {
-                for (exclusionElement in dataStore.listExclusions) {
-
-                    // Запись пробелов в Hashmap
-                    if (dataStore.listRevers[listSize] == ' ') { dataStore.spaceText.add(listSize)}
-
-                    if (exclusionElement == dataStore.listRevers[listSize]) {
-                        dataStore.exclusionsValues[listSize] = dataStore.listRevers[listSize]
-                        dataStore.listRevers.removeAt(listSize)
-                        break
-                    }
-                }
-            } else {
-                check = false
-                if (indentationCheck) {wordTurn.turnWordSpace()} else {wordTurn.wordTurn()}
-                assemblingSingleWord.assemblingSingleWord()
-            }
-        }
+         for(index in word){
+             for (char in exclusionsTexts){
+                 if (index == char){
+                     dataStore.exclusionsValues.put(keyExclusionsValues, char)
+                 }
+             }
+             keyExclusionsValues++
+         }
     }
 
+    // Removing an exception from a word
+    // Doesn't work as it should
+    fun removingExceptionsWord(word: String): String{
 
-    // The function checks if the values in the listExclusions and listRevers.
-    fun arrayEqualityCheck(word: String) {
-        if (dataStore.listExclusions.equals(dataStore.listRevers)) {
-            dataStore.finalValue.clear()
-            for (char in word) {
-                dataStore.finalValue.add(char)
-            }
-            assemblingSingleWord.assemblingSingleWord()
-        } else { removingExceptionsArray() }
+        var wordWithoutException: String = ""
+
+        exclusionsTexts.forEach { wordWithoutException = word.replace(it.toString(), "")}
+
+        return wordWithoutException
     }
+
 }
