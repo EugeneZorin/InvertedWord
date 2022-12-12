@@ -52,12 +52,11 @@ class WordArray{
     }
 
     // Removing an exception from a word
-    // Doesn't work as it should
     fun removingExceptionsWord(word: String): String{
 
-        var wordWithoutException: String = ""
+        var wordWithoutException: String = word
 
-        exclusionsTexts.forEach { wordWithoutException = word.replace(it.toString(), "")}
+        exclusionsTexts.forEach { wordWithoutException = wordWithoutException.replace(it.toString(), "")}
 
         return wordWithoutException
     }
