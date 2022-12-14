@@ -5,8 +5,7 @@ class DataStore {
     val exclusionsValues = HashMap<Int, Char>()
     val mapRevers = HashMap<Int, String>()
 
-    // In theory needed for cleaning when reused
-    // does not work
+    // clears arrays so text doesn't overlap
     fun clearArray(){
         exclusionsValues.clear()
         mapRevers.clear()
