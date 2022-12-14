@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.invertedword.InputCheck
 import com.example.invertedword.ReverseActivity
+import com.example.invertedword.mainсode.dataStore
 
 val reverseActivity = ReverseActivity()
 val inputCheck = InputCheck()
@@ -50,6 +51,7 @@ fun ButtonBack(){
     Button(onClick = {
 
         reverseActivity.buttonBack(context)
+        dataStore.clearArray()
 
     }) {
         Text("Назад", fontSize = 25.sp)
