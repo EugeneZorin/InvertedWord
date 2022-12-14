@@ -13,6 +13,7 @@ class WordArray{
     // write word in hashmap
     fun wordArray(word: String): String {
 
+
         searchExceptionNumber(word)
 
         var purifiedWord: String = removingExceptionsWord(word)
@@ -51,6 +52,7 @@ class WordArray{
          }
     }
 
+
     // Removing an exception from a word
     fun removingExceptionsWord(word: String): String{
 
@@ -60,5 +62,4 @@ class WordArray{
 
         return wordWithoutException
     }
-
 }

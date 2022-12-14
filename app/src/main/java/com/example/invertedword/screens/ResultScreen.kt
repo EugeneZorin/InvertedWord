@@ -10,13 +10,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.invertedword.InputCheck
 import com.example.invertedword.ReverseActivity
-import com.example.invertedword.mainсode.DataStore
-import com.example.invertedword.mainсode.WordArray
-import com.example.invertedword.mainсode.dataStore
 
 val reverseActivity = ReverseActivity()
-val wordArray = WordArray()
+val inputCheck = InputCheck()
 
 @Preview(showBackground = true)
 @Composable
@@ -30,7 +28,7 @@ fun ResultScreen() {
             .height(55.dp)
             .offset(x = 127.dp, y = 150.dp)
         ) {
-            Text(wordArray.wordArray(reversTexts),
+            Text(inputCheck.inputCheck(reversTexts),
                 fontSize = 50.sp, textAlign = TextAlign.Center) }
 
         Box(modifier = Modifier

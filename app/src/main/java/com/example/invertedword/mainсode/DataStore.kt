@@ -12,6 +12,4 @@ class DataStore {
         mapRevers.clear()
 
     }
-
-
 }
