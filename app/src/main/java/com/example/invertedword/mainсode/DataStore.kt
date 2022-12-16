@@ -1,5 +1,8 @@
 package com.example.invertedword.mainсode
 
+val dataStore = DataStore()
+var wordArray = WordArray()
+
 class DataStore {
 
     val exclusionsValues = HashMap<Int, Char>()

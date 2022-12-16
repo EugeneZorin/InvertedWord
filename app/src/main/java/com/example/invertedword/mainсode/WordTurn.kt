@@ -1,7 +1,5 @@
 package com.example.invertedword.mainсode
 
-val wordArray = WordArray()
-
 class WordTurn {
 
     // Inverts and collects a word

@@ -1,11 +1,8 @@
-package com.example.invertedword
+package com.example.invertedword.mainсode
 
-import com.example.invertedword.mainсode.WordArray
 import com.example.invertedword.screens.exclusionsTexts
 
 class InputCheck() {
-
-    private val wordArray = WordArray()
 
     // Checking for the same input in both lines
     fun inputCheck(word: String): String{
@@ -13,7 +10,9 @@ class InputCheck() {
         val finalValue: String = if (word == exclusionsTexts){
             word
 
-        } else { wordArray.wordArray(word) }
+        } else {
+            wordArray.searchExceptionNumber(word, exclusionsTexts)
+            wordArray.wordArray(word, exclusionsTexts) }
 
         return finalValue
     }

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.invertedword.mainсode.DataStore
 import com.example.invertedword.screens.MainScreen
 import com.example.invertedword.ui.theme.InvertedWordTheme
 
