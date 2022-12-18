@@ -5,7 +5,7 @@ import com.example.invertedword.screens.exclusionsTexts
 class InputCheck() {
 
     // Checking for the same input in both lines
-    fun inputCheck(word: String): String{
+    fun inputCheck(word: String, exclusionsTexts:String): String{
 
         val finalValue: String = if (word == exclusionsTexts){
             word

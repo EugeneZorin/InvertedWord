@@ -30,7 +30,7 @@ fun ResultScreen() {
             .height(55.dp)
             .offset(x = 100.dp, y = 150.dp)
         ) {
-            Text(inputCheck.inputCheck(reversTexts),
+            Text(inputCheck.inputCheck(reversTexts, exclusionsTexts),
                 fontSize = 50.sp, textAlign = TextAlign.Center) }
 
         Box(modifier = Modifier
